@@ -14,7 +14,10 @@ public class Assets : MonoBehaviour
     {
         return instance;
     }
+    public enum PlayerState { WaitingToStart,Playing, Died }
 
     public Transform PfPipeHead;
     public Transform PfPipeBody;
+    public Score score;
+    public Bird Bird;
 }
