@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     private Text score;
-    private Level level;
+    private Text highScore;
 
     // Start is called before the first frame update
     void Start()
     {
         score = GameObject.Find("Score").GetComponent<Text>();
-        level = GameObject.Find("Level").GetComponent<Level>();
-
+        highScore = GameObject.Find("HighScore").GetComponent<Text>();
+        SetHighScore();
+        HighScore.Start();
     }
 
     // Update is called once per frame
@@ -22,8 +23,12 @@ public class Score : MonoBehaviour
        
     }
 
+    void SetHighScore()
+    {
+        highScore.text = "HighScore: " + HighScore.GetHighScore();
+    }
    public void UpdateScoreText()
     {
-       score.text = level.PlayerScore.ToString();
+        score.text = Assets.GetInstance().level.PlayerScore.ToString();
     }
 }

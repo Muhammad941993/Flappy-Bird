@@ -34,6 +34,7 @@ public class Level : MonoBehaviour
       
         SetDifficulty(Difficulty.Easy);
 
+        InvokeRepeating("DestroySounds", 5f, 10f);
     }
 
     private void StartPlaying(object sender, System.EventArgs e)
@@ -183,6 +184,7 @@ public class Level : MonoBehaviour
                 {
                     PlayerScore++;
                     Assets.GetInstance().score.UpdateScoreText();
+                    SoundManager.PlaySound(SoundManager.Sound.Score);
                 }
                
             }
@@ -196,7 +198,15 @@ public class Level : MonoBehaviour
        
     }
 
-   
+   void DestroySounds()
+    {
+        GameObject[] soundarr = GameObject.FindGameObjectsWithTag("Sound");
+       foreach(GameObject i in soundarr)
+        {
+            Destroy(i);
+        }
+
+    }
    
     // pipe class that have pipe data and functions
     private class Pipe 

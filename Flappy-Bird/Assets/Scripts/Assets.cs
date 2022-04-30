@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Assets : MonoBehaviour
 {
@@ -20,4 +22,17 @@ public class Assets : MonoBehaviour
     public Transform PfPipeBody;
     public Score score;
     public Bird Bird;
+    public Level level;
+  
+    public SoundAudioClip[] soundAudioClipsArr;
+
+    [Serializable]
+    public class SoundAudioClip
+    {
+        public SoundManager.Sound sound;
+        public AudioClip audioClip;
+    }
+
 }
+
+

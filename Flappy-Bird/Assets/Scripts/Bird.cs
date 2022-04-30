@@ -19,12 +19,9 @@ public class Bird : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    private void FixedUpdate()
+
+    void Update()
     {
        
 
@@ -53,10 +50,10 @@ public class Bird : MonoBehaviour
     // take input with mouse and keyboard
     void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0) && moving)
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) && moving)
         {
             birdRB.velocity = Vector2.up * speed;
-           
+            SoundManager.PlaySound(SoundManager.Sound.Jumb);
         }
     }
 
@@ -64,6 +61,7 @@ public class Bird : MonoBehaviour
     {
         birdRB.bodyType = RigidbodyType2D.Static;
        if(OnDiead != null) OnDiead(this,EventArgs.Empty);
+        SoundManager.PlaySound(SoundManager.Sound.Lose);
         moving = false;
     }
 }
